@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - AEXEL</title>
+    <!-- Bootstrap CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <!-- Google Fonts - Bebas Neue (for headings) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts - Inter (for body text, as per previous instructions) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
+    ></script>
+    <style>
+      /* Apply Inter font to the entire body for general text */
+      body {
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+        /* Background gradient */
+        background: linear-gradient(
+            to bottom,
+            #af2121 0%,
+            #0f0f0f 40%,
+            #970303 150%
+          ),
+          linear-gradient(
+            to top,
+            rgba(5, 5, 5, 0.87) 0%,
+            rgba(0, 0, 0, 0.25) 200%
+          );
+        background-blend-mode: multiply;
+        min-height: 100vh; /* Ensure body takes full viewport height */
+      }
+
+      /* Navbar styling */
+      .navbar-transparent {
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.8
+        ) !important; /* Slightly dark transparent background */
+        transition: background-color 0.3s ease-in-out; /* Smooth transition for hover */
+        padding: 1rem 0; /* Add some vertical padding */
+      }
+
+      .navbar-brand,
+      .navbar-nav .nav-link {
+        color: #ffffff !important; /* White text for better contrast on dark background */
+        font-weight: 500;
+        transition: color 0.3s ease-in-out;
+        border-radius: 0.5rem; /* Rounded corners for links */
+        padding: 0.5rem 1rem; /* Padding for links */
+      }
+
+      .navbar-nav .nav-link:hover {
+        color: #13b31b !important; /* Green on hover */
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.1
+        ); /* Subtle background on hover */
+      }
+
+      .navbar-brand:hover {
+        color: #13b31b !important; /* Green on hover for brand */
+      }
+
+      /* Style for the toggler icon */
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.2);
+        border-radius: 0.5rem;
+      }
+
+      /* AEXEL brand specific styling */
+      .EX:hover {
+        color: red; /* Hover effect for 'EX' in brand name */
+      }
+
+      /* Main content section styling */
+      .hero-section {
+        min-height: calc(
+          100vh - 80px
+        ); 
+        display: flex;
+        align-items: center;
+        padding-top: 80px; /* Offset for fixed navbar */
+        padding-bottom: 2rem;
+      }
+
+      .text-content {
+        
+        padding-right: 2rem; /* Add some padding to the right for spacing */
+      }
+
+      .text-content h1 {
+        color: white;
+        font-size: 8rem; /* Adjusted font size for better responsiveness */
+        font-family: "Bebas Neue", sans-serif;
+        margin-bottom: 0;
+        line-height: 1; /* Adjust line height for large text */
+      }
+
+      .text-content h3 {
+        color: white;
+        margin-top: 0;
+        border-bottom: red 3px solid;
+        width: fit-content; /* Adjust width to content */
+        padding-bottom: 6px;
+        margin-bottom: 1.5rem; /* Add space below subtitle */
+      }
+
+      .text-content p {
+        color: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Slightly transparent white for body text */
+        line-height: 1.6;
+        font-size: 1.1rem;
+      }
+
+      .image-container {
+        display: flex;
+        justify-content: center;
+
+        align-items: center;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        background-color: rgba(185, 4, 4, 0.863);
+        filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.5));
+        margin: 0 auto;
+      }
+
+      .vga {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.7));
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 991.98px) {
+        .hero-section {
+          flex-direction: column;
+          text-align: center;
+          padding-top: 100px;
+        }
+        .text-content {
+          padding-right: 0;
+          margin-bottom: 2rem;
+        }
+        .text-content h1 {
+          font-size: 6rem;
+        }
+        .text-content h3 {
+          margin: 0 auto 1.5rem auto;
+        }
+        .image-container {
+          width: 280px;
+          height: 280px;
+
+          justify-content: center;
+          align-items: center;
+          padding-right: 0;
+          padding-bottom: 0;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        .text-content h1 {
+          font-size: 4rem;
+        }
+      }
+
+      .glb {
+        margin-left: 300px;
+        height: 250px;
+        width: 500px;
+        margin-bottom: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark fixed-top navbar-transparent"
+    >
+      <div class="container-fluid px-4">
+        <a class="navbar-brand fw-bold fs-4" href="#">
+          A<span class="EX">EX</span>EL
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item me-4">
+              <a class="nav-link active" aria-current="page" href="Home.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" href="About.html">Drivers</a>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" href="Games.html">Aexel Games</a>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" href="Contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section container">
+      <div class="row align-items-center">
+        <!-- Text Content Column -->
+        <div class="col-lg-6 col-md-12 text-content">
+          <h1>A<span style="color: red">EX</span>EL</h1>
+          <h3>Dominate The Future</h3>
+          <p>
+            AEXEL bukan sekadar VGA. Kami adalah gerbang menuju dunia visual
+            yang tak tertandingi. Dirancang untuk para gamer, kreator, dan
+            inovator, AEXEL menghadirkan performa grafis yang ekstrem dan
+            realisme yang memukau ke setiap piksel. Dengan AEXEL, rasakan setiap
+            detail, setiap gerakan, dan setiap warna dengan kejernihan yang luar
+            biasa. Kami membangun masa depan visual, satu frame pada satu waktu.
+          </p>
+
+          <p>AEXEL: Unleash Your Vision.</p>
+        </div>
+        <!-- Image Container Column -->
+        <div class="col-lg-6 col-md-12 d-flex justify-content-center">
+          <div class="image-container">
+            <img
+              src="asset img/NVIDIA_GeForce_RTX_3090_Founders_Edition_Graphics_Card-removebg-preview.png"
+              alt="vga"
+              class="vga"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About nore -->
+    <section
+      class="container my-5 py-5 text-center"
+      style="
+        background-color: rgba(0, 0, 0, 0.699);
+        border-radius: 1rem;
+        border: solid 3px red;
+      "
+    >
+      <h2 class="text-white mb-4">Explore More About AEXEL</h2>
+      <model-viewer
+        src="powercolor_radeon_rx_570_graphics_card.glb"
+        camera-controls
+        class="glb"
+      ></model-viewer>
+
+      <p class="text-white">
+        DLSS adalah rangkaian teknologi neural rendering revolusioner yang
+        menggunakan AI untuk meningkatkan FPS, mengurangi latensi, dan
+        meningkatkan kualitas gambar. ‌Terobosan terbaru, DLSS 4, menghadirkan
+        Generasi Multi Frame baru dan Resolusi Super yang ditingkatkan, didukung
+        oleh Aexel 50 Series dan Tensor Cores generasi kelima. DLSS di Aexel
+        adalah cara terbaik untuk bermain game, didukung oleh superkomputer
+        AEXEL AI di cloud yang terus meningkatkan kemampuan bermain game PC
+        Anda.
+      </p>
+      <p class="text-white">
+        Arsitektur AEXEL Blackwell membuka realisme full ray tracing yang
+        mengubah permainan. Nikmati visual berkualitas sinematik dengan
+        kecepatan belum pernah terjadi sebelumnya yang didukung oleh AEXEL AI 50
+        Series dengan RT Cores generasi keempat dan terobosan teknologi
+        rendering neural yang dipercepat dengan Tensor Cores generasi kelima.
+      </p>
+    </section>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
